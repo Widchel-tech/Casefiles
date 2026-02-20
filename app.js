@@ -715,7 +715,18 @@
 
   function bindPageActions(hash) {if (hash === "#/hq") {
   document.querySelector("[data-act='openCase']")?.addEventListener("click", () => {
-    alert("Case view coming next. Layout is ready.");
+    navTo("#/case/FBI-HOM-24-001");if (hash === "#/case/FBI-HOM-24-001") {
+  document.querySelectorAll("[data-act='evidence']").forEach(b => {
+    b.addEventListener("click", () => alert("Evidence viewer later. Layout ready."));
+  });
+  document.querySelectorAll("[data-act='suspect']").forEach(b => {
+    b.addEventListener("click", () => alert("Suspect profile later. Layout ready."));
+  });
+  document.querySelectorAll("[data-act='unlock']").forEach(b => {
+    b.addEventListener("click", () => alert("Progression system later. Layout ready."));
+  });
+}  });
+};
   });
 }
     if (hash === "#/login") {
