@@ -713,7 +713,11 @@
     bindPageActions(hash);
   }
 
-  function bindPageActions(hash) {
+  function bindPageActions(hash) {if (hash === "#/hq") {
+  document.querySelector("[data-act='openCase']")?.addEventListener("click", () => {
+    alert("Case view coming next. Layout is ready.");
+  });
+}
     if (hash === "#/login") {
       document.getElementById("doLogin")?.addEventListener("click", () => {
         const email = document.getElementById("email").value.trim().toLowerCase();
