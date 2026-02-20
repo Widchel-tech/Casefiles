@@ -298,7 +298,115 @@
       </div>
     `);
   }
+  function CaseViewer() {
+  const sess = requireAgent();
+  if (!sess) return PageShell(`<div class="wrap"><p class="help">Redirecting…</p></div>`);
 
+  const c = DB.cases.find(x => x.id === "FBI-HOM-24-001");
+  if (!c) return PageShell(`<div class="wrap"><p class="help">Case not found.</p></div>`);
+
+  const sceneItems = c.scenes.map(s => `
+    <a class="sideLink ${s.id === "S1" ? "active" : ""}" href="#/case/${esc(c.id)}">
+      <span>${esc(s.id)} — ${esc(s.name)}</span>
+      <span class="badge" style="opacity:.8">${esc(s.status)}</span>
+    </a>
+  `).join("");
+
+  const evidenceRows = c.evidence.map(e => `
+    <tr>
+      <td><b>${esc(e.id)}</b></td>
+      <td>${esc(e.name)}</td>
+      <td>${esc(e.type)}</td>
+      <td><span class="badge">${esc(e.status)}</span></td>
+      <td style="text-align:right"><button class="btn ghost" data-act="evidence" data-id="${esc(e.id)}">View</button></td>
+    </tr>
+  `).join("");
+
+  const suspectRows = c.suspects.map(p => `
+    <tr>
+      <td><b>${esc(p.id)}</b></td>
+      <td>${esc(p.name)}</td>
+      <td>${esc(p.role)}</td>
+      <td><span class="badge ${p.risk === "HIGH" ? "bad" : p.risk === "LOW" ? "good" : ""}">${esc(p.risk)}</span></td>
+      <td style="text-align:right"><button class="btn ghost" data-act="suspect" data-id="${esc(p.id)}">Profile</button></td>
+    </tr>
+  `).join("");
+
+  return PageShell(`
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="sideTitle">
+          <div class="name">${esc(c.id)}</div>
+          <div class="sub">${esc(c.title)} • ${esc(c.location)}</div>
+        </div>
+
+        <div class="smallcaps">Scenes</div>
+        <div class="sideNav" style="margin-top:10px">
+          ${sceneItems}
+        </div>
+
+        <div style="margin-top:18px">
+          <a class="sideLink" href="#/hq">← Back to HQ</a>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="card">
+          <div class="smallcaps">Scene S1 • Briefing Room</div>
+          <div style="font-size:28px; font-weight:900; margin-top:10px">Briefing: ${esc(c.title)}</div>
+          <p class="help" style="margin-top:10px; max-width:900px">
+            This is the case viewer layout. Later you’ll plug in your real scene text, choices, interrogations, and outcomes.
+          </p>
+          <div class="hr"></div>
+
+          <div class="row">
+            <span class="badge">Clearance: Standard</span>
+            <span class="badge">Time Estimate: ${esc(c.time)}</span>
+            <span class="badge">Status: OPEN</span>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="row">
+          <div class="card" style="flex:1; min-width:320px">
+            <div class="smallcaps">Evidence Vault</div>
+            <h3 style="margin:10px 0 12px; letter-spacing:.10em; text-transform:uppercase">Evidence</h3>
+            <table class="table">
+              <thead>
+                <tr><th>ID</th><th>Name</th><th>Type</th><th>Status</th><th style="text-align:right">Action</th></tr>
+              </thead>
+              <tbody>${evidenceRows}</tbody>
+            </table>
+          </div>
+
+          <div class="card" style="flex:1; min-width:320px">
+            <div class="smallcaps">Persons of Interest</div>
+            <h3 style="margin:10px 0 12px; letter-spacing:.10em; text-transform:uppercase">Suspects</h3>
+            <table class="table">
+              <thead>
+                <tr><th>ID</th><th>Name</th><th>Role</th><th>Risk</th><th style="text-align:right">Action</th></tr>
+              </thead>
+              <tbody>${suspectRows}</tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <div class="smallcaps">Next Actions</div>
+          <div class="row" style="margin-top:10px">
+            <button class="btn ghost" data-act="unlock">Request Warrant</button>
+            <button class="btn ghost" data-act="unlock">Authorize Evidence Access</button>
+            <button class="btn" data-act="unlock">Proceed to Crime Scene</button>
+          </div>
+          <p class="help" style="margin-top:10px">Buttons are placeholders for your future case logic.</p>
+        </div>
+      </main>
+    </div>
+  `);
+}
   // ---------- Owner Portal (interactive, protected by owner login) ----------
   function OwnerShell(active, content) {
     return `
