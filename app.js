@@ -2,8 +2,7 @@
   const $app = document.getElementById("app");
 
   // ---------- Simple Router (hash-based) ----------
-  const routes = {
-    "": Landing,
+  const routes = {"#/case/FBI-HOM-24-001": CaseViewer,    "": Landing,
     "#/": Landing,
     "#/login": Login,
     "#/register": Register,
