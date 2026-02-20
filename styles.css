@@ -211,3 +211,54 @@ input:focus{border-color:rgba(255,255,255,.25)}
 .progress > div{height:100%}
 .good{color:var(--good)}
 .bad{color:var(--bad)}
+/* ===== Modal ===== */
+.modalBack {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 999;
+}
+.modal {
+  width: min(720px, 100%);
+  border-radius: 18px;
+  background: rgba(12,13,16,.92);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 24px 90px rgba(0,0,0,.65);
+  padding: 18px;
+}
+.modalTop {
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 12px;
+}
+.modalClose {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.modalClose:hover { background: rgba(255,255,255,.10); }
+
+/* ===== Drawer (Case Viewer) ===== */
+.drawerBack {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 998;
+}
+.drawer {
+  position: fixed;
+  top: 0; right: 0;
+  height: 100vh;
+  width: min(980px, 92vw);
+  background: rgba(10,11,13,.96);
+  border-left: 1px solid rgba(255,255,255,.08);
+  box-shadow: -24px 0 90px rgba(0,0,0,.65);
+  z-index: 999;
+  overflow: auto;
+}
+.drawerPad { padding: 18px; }
