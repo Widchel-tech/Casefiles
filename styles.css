@@ -211,3 +211,85 @@ input:focus{border-color:rgba(255,255,255,.25)}
 .progress > div{height:100%}
 .good{color:var(--good)}
 .bad{color:var(--bad)}
+/* ===== Emergent-like polish ===== */
+:root{
+  --radius: 16px;
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+}
+
+body{
+  letter-spacing: .01em;
+}
+
+.card, .centerBox, .stat, .table{
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(10,11,13,.55);
+  backdrop-filter: blur(14px);
+}
+
+.hero{
+  padding-top: 92px;
+}
+
+.btn{
+  border-radius: 12px;
+  padding: 14px 20px;
+  transform: translateZ(0);
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+}
+
+.btn:active{
+  transform: translateY(0px) scale(.99);
+}
+
+.btn.ghost{
+  background: rgba(255,255,255,.05);
+}
+
+.pill{
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+
+input{
+  border-radius: 12px;
+  padding: 14px 14px;
+}
+
+.badge{
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+}
+
+.shell{
+  background: rgba(0,0,0,.25);
+}
+
+.sidebar{
+  background: rgba(0,0,0,.50);
+}
+
+.sideLink{
+  border-radius: 12px;
+}
+
+/* subtle separators */
+.hr{
+  opacity: .8;
+}
+
+/* tighten headings */
+h2{
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
