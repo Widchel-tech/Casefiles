@@ -1,114 +1,15 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Case Files</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0a0b0d;
-      color: white;
-    }
-
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9));
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 80px;
-      margin: 0;
-      letter-spacing: 5px;
-    }
-
-    .subtitle {
-      color: #aaa;
-      max-width: 600px;
-      margin: 20px 0;
-    }
-
-    .btn {
-      background: white;
-      color: black;
-      padding: 15px 30px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-
-    .section {
-      padding: 100px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,.05);
-      padding: 40px;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 50px;
-      color: #888;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-
 <body>
+  <div id="app"></div>
 
-  <div class="hero">
-    <h1>CASE FILES</h1>
-    <p class="subtitle">
-      Step into the shoes of an FBI investigator.
-      Solve hyper-realistic cases where every decision shapes the outcome.
-    </p>
-    <a href="#" class="btn">Start Investigation</a>
-  </div>
-
-  <div class="section">
-    <h2 style="text-align:center;">Your Investigation Toolkit</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Authentic Case Files</h3>
-        <p>Realistic FBI cases with legal procedures and consequences.</p>
-      </div>
-
-      <div class="card">
-        <h3>Procedural Consequences</h3>
-        <p>Every action matters. Mistakes compromise cases.</p>
-      </div>
-
-      <div class="card">
-        <h3>AI Interrogations</h3>
-        <p>Question suspects powered by AI. They lie and deflect.</p>
-      </div>
-
-      <div class="card">
-        <h3>Career Progression</h3>
-        <p>Rise through ranks from Analyst to Task Force Lead.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    © 2026 Case Files
-  </div>
-
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
